@@ -2,7 +2,9 @@
 
 Esta API hace scraping de ofertas laborales en Aldaba.com, filtra trabajos tecnológicos por palabras clave y envía notificaciones automáticas por WhatsApp usando Twilio.
 
-🚀 **Proyecto en línea:** [https://aldabajobscraper.onrender.com](https://aldabajobscraper.onrender.com)
+🚀 **Proyecto en línea:** [https://aldabajobscraper.onrender.com](https://aldabajobscraper.onrender.com/api/docs).
+
+Nota: Para usar el Api en linea tienes que agregar este numero a tus contactos de WhatsApp +1 (415) 523‑8886 y escribirle `join field-invented` para permitir que te envie notificaciones. Y Luego agregar tu numero a la lista de recipients ediante el endpoint [POST] [https://aldabajobscraper.onrender.com/api/docs#/jobs/JobController_addRecipient](https://aldabajobscraper.onrender.com/api/docs#/jobs/JobController_addRecipient)
 
 ## Requisitos del Sistema
 
