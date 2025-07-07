@@ -7,12 +7,12 @@ const path = require('path');
 console.log('🚀 Aldaba Job Scraper - Iniciando...\n');
 
 // Verificar si existe el archivo .env
-if (!fs.existsSync('.env')) {
-    console.log('⚠️  No se encontró archivo .env');
-    console.log('📋 Copia .env.example a .env y configura tus credenciales de Twilio\n');
-    console.log('Comando: cp .env.example .env\n');
-    process.exit(1);
-}
+// if (!fs.existsSync('.env')) {
+//     console.log('⚠️  No se encontró archivo .env');
+//     console.log('📋 Copia .env.example a .env y configura tus credenciales de Twilio\n');
+//     console.log('Comando: cp .env.example .env\n');
+//     process.exit(1);
+// }
 
 // Verificar si existe la carpeta dist
 if (!fs.existsSync('dist')) {
