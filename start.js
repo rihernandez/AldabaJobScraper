@@ -52,8 +52,8 @@ async function setup() {
 
     // 4. Iniciar servidor
     console.log('\n🌐 Iniciando servidor...');
-    console.log('📍 Servidor disponible en: http://localhost:5000');
-    console.log('📚 Documentación: http://localhost:5000/api/docs');
+    console.log('📍 Servidor disponible en: http://localhost:xxx');
+    console.log('📚 Documentación: /api/docs');
     console.log('🔄 Presiona Ctrl+C para detener\n');
 
     // Usar spawn para mantener el proceso activo
