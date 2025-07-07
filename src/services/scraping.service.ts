@@ -17,9 +17,9 @@ export class ScrapingService {
     
     let browser;
     try {
-      browser = await puppeteer.launch({
+      // Configuración para usar Chrome del sistema o el de Replit
+      const puppeteerOptions: any = {
         headless: true,
-        executablePath: '/nix/store/zi4f80l169xlmivz8vja8wlphq74qqk0-chromium-125.0.6422.141/bin/chromium',
         args: [
           '--no-sandbox',
           '--disable-setuid-sandbox',
@@ -39,7 +39,14 @@ export class ScrapingService {
           '--metrics-recording-only',
           '--disable-background-networking',
         ],
-      });
+      };
+
+      // Solo agregar executablePath si estamos en Replit
+      if (process.env.REPLIT_DEPLOYMENT || process.env.REPL_ID) {
+        puppeteerOptions.executablePath = '/nix/store/zi4f80l169xlmivz8vja8wlphq74qqk0-chromium-125.0.6422.141/bin/chromium';
+      }
+
+      browser = await puppeteer.launch(puppeteerOptions);
 
       const page = await browser.newPage();
       await page.setUserAgent(

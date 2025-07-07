@@ -85,16 +85,30 @@ export class NotificationService {
 
   private formatJobsMessage(jobs: JobListing[]): string {
     const jobCount = jobs.length;
-    const header = `🚀 *Aldaba Job Alert*\n\n${jobCount === 1 ? 'Nueva oferta encontrada' : `${jobCount} nuevas ofertas encontradas`}!\n\n`;
+    const header = `🚀 *Aldaba Job Alert*\n\n${jobCount} nueva${jobCount > 1 ? 's' : ''} oferta${jobCount > 1 ? 's' : ''}!\n\n`;
     
-    const jobsList = jobs.slice(0, 5).map((job, index) => {
-      return `${index + 1}. *${job.title}*\n🏢 ${job.company}\n📍 ${job.location}${job.url ? `\n🔗 ${job.url}` : ''}\n`;
+    // Limitar a 3 trabajos para evitar el límite de 1600 caracteres
+    const jobsList = jobs.slice(0, 3).map((job, index) => {
+      // Truncar título si es muy largo
+      const title = job.title.length > 40 ? job.title.substring(0, 40) + '...' : job.title;
+      const company = job.company.length > 30 ? job.company.substring(0, 30) + '...' : job.company;
+      const location = job.location.length > 25 ? job.location.substring(0, 25) + '...' : job.location;
+      
+      return `${index + 1}. *${title}*\n🏢 ${company}\n📍 ${location}\n`;
     }).join('\n');
 
-    const footer = jobCount > 5 ? `\n...y ${jobCount - 5} ofertas más!\n` : '\n';
+    const footer = jobCount > 3 ? `\n...y ${jobCount - 3} más!\n` : '\n';
     const timestamp = `📅 ${new Date().toLocaleString('es-DO')}`;
 
-    return header + jobsList + footer + timestamp;
+    const message = header + jobsList + footer + timestamp;
+    
+    // Asegurar que el mensaje no exceda 1500 caracteres (buffer de seguridad)
+    if (message.length > 1500) {
+      const truncatedMessage = message.substring(0, 1450) + '...\n' + timestamp;
+      return truncatedMessage;
+    }
+    
+    return message;
   }
 
   async sendTestNotification(): Promise<void> {
