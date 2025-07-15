@@ -1,4 +1,4 @@
-# Aldaba Job Scraper
+# Aldaba Job Seeker
 
 Esta API hace scraping de ofertas laborales en Aldaba.com, filtra trabajos tecnológicos por palabras clave y envía notificaciones automáticas por WhatsApp usando Twilio.
 
